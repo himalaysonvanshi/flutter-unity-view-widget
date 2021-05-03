@@ -25,7 +25,7 @@ class FlutterUnityWidgetController(
         binaryMessenger: BinaryMessenger,
         lifecycleProvider: LifecycleProvider,
         options: FlutterUnityWidgetOptions
-) :     PlatformView,
+) : PlatformView,
         DefaultLifecycleObserver,
         ActivityPluginBinding.OnSaveInstanceStateListener,
         FlutterUnityWidgetOptionsSink,
@@ -94,9 +94,13 @@ class FlutterUnityWidgetController(
         disposed = true
         methodChannel.setMethodCallHandler(null)
 
-        val lifecycle = lifecycleProvider.getLifecycle()
-        if (lifecycle != null) {
-            lifecycle.removeObserver(this)
+        try {
+            val lifecycle = lifecycleProvider.getLifecycle()
+            if (lifecycle != null) {
+                lifecycle.removeObserver(this)
+            }
+        } catch (e: Exception) {
+            // handler
         }
     }
 
