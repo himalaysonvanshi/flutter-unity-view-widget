@@ -1,4 +1,4 @@
-part of flutter_unity_widget;
+part of flutter_unity_widget_old;
 
 typedef void UnityCreatedCallback(UnityWidgetController controller);
 
@@ -12,7 +12,9 @@ class UnityWidgetController {
   final int unityId;
 
   /// used for cancel the subscription
-  StreamSubscription _onUnityMessageSub,_onUnitySceneLoadedSub,_onUnityUnloadedSub;
+  StreamSubscription _onUnityMessageSub,
+      _onUnitySceneLoadedSub,
+      _onUnityUnloadedSub;
 
   UnityWidgetController._(this._unityWidgetState, {@required this.unityId})
       : assert(_unityViewFlutterPlatform != null) {
@@ -43,14 +45,16 @@ class UnityWidgetController {
 
   void _connectStreams(int unityId) {
     if (_unityWidgetState.widget.onUnityMessage != null) {
-      _onUnityMessageSub = _unityViewFlutterPlatform.onUnityMessage(unityId: unityId).listen(
-          (UnityMessageEvent e) =>
+      _onUnityMessageSub = _unityViewFlutterPlatform
+          .onUnityMessage(unityId: unityId)
+          .listen((UnityMessageEvent e) =>
               _unityWidgetState.widget.onUnityMessage(e.value));
     }
 
     if (_unityWidgetState.widget.onUnitySceneLoaded != null) {
-      _onUnitySceneLoadedSub = _unityViewFlutterPlatform.onUnitySceneLoaded(unityId: unityId).listen(
-          (UnitySceneLoadedEvent e) =>
+      _onUnitySceneLoadedSub = _unityViewFlutterPlatform
+          .onUnitySceneLoaded(unityId: unityId)
+          .listen((UnitySceneLoadedEvent e) =>
               _unityWidgetState.widget.onUnitySceneLoaded(e.value));
     }
 
@@ -226,7 +230,7 @@ class UnityWidgetController {
   }
 
   /// cancel the subscriptions when dispose called
-  void _cancelSubscriptions(){
+  void _cancelSubscriptions() {
     _onUnityMessageSub?.cancel();
     _onUnitySceneLoadedSub?.cancel();
     _onUnityUnloadedSub?.cancel();

@@ -1,4 +1,4 @@
-part of flutter_unity_widget;
+part of flutter_unity_widget_old;
 
 class UnityWidget extends StatefulWidget {
   ///Event fires when the unity player is created.

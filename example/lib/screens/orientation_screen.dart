@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_unity_widget/flutter_unity_widget.dart';
+import 'package:flutter_unity_widget_old/flutter_unity_widget_old.dart';
 
 class OrientationScreen extends StatefulWidget {
   OrientationScreen({Key key}) : super(key: key);

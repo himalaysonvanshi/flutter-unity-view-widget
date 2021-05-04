@@ -1,4 +1,4 @@
-library flutter_unity_widget;
+library flutter_unity_widget_old;
 
 import 'dart:async';
 import 'dart:convert';

@@ -1,4 +1,4 @@
-part of flutter_unity_widget;
+part of flutter_unity_widget_old;
 
 class UnityEvent<T> {
   /// The ID of the Unity this event is associated to.

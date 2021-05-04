@@ -1,4 +1,4 @@
-# flutter_unity_widget
+# flutter_unity_widget_old
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 
@@ -23,7 +23,7 @@ First depend on the library by adding this to your packages `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_unity_widget: ^3.0.3
+  flutter_unity_widget_old: ^3.0.3
 ```
 
 Note: Please give [`version 4.0.0`](https://github.com/juicycleff/flutter-unity-view-widget/tree/v4) a spin. Currently in alpha, but I will say it's pretty stable to use. Please report any issues you have. It's hard to write test on this. But it's is in the pipeline
@@ -31,7 +31,7 @@ Note: Please give [`version 4.0.0`](https://github.com/juicycleff/flutter-unity-
 Now inside your Dart code you can import it.
 
 ```dart
-import 'package:flutter_unity_widget/flutter_unity_widget.dart';
+import 'package:flutter_unity_widget_old/flutter_unity_widget_old.dart';
 ```
 
 <br />
@@ -285,7 +285,7 @@ Thanks to [@PiotrxKolasinski](https://github.com/PiotrxKolasinski) for writing d
 ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_unity_widget/flutter_unity_widget.dart';
+import 'package:flutter_unity_widget_old/flutter_unity_widget_old.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -340,7 +340,7 @@ class _UnityDemoScreenState extends State<UnityDemoScreen>{
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:flutter_unity_widget/flutter_unity_widget.dart';
+import 'package:flutter_unity_widget_old/flutter_unity_widget_old.dart';
 
 void main() => runApp(MyApp());
 
@@ -483,8 +483,8 @@ Support this project with your organization. Your donations will be used to help
 <a href="https://opencollective.com/ultimate-backend/sponsor/8/website"><img src="https://opencollective.com/ultimate-backend/sponsor/8/avatar.svg"></a>
 <a href="https://opencollective.com/ultimate-backend/sponsor/9/website"><img src="https://opencollective.com/ultimate-backend/sponsor/9/avatar.svg"></a>
 
-[version-badge]: https://img.shields.io/pub/v/flutter_unity_widget.svg?style=flat-square
-[package]: https://pub.dartlang.org/packages/flutter_unity_widget/
+[version-badge]: https://img.shields.io/pub/v/flutter_unity_widget_old.svg?style=flat-square
+[package]: https://pub.dartlang.org/packages/flutter_unity_widget_old/
 [license-badge]: https://img.shields.io/github/license/juicycleff/flutter-unity-view-widget.svg?style=flat-square
 [license]: https://github.com/juicycleff/flutter-unity-view-widget/blob/master/LICENSE
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square

@@ -1,4 +1,4 @@
-part of flutter_unity_widget;
+part of flutter_unity_widget_old;
 
 class MethodChannelUnityViewFlutter extends UnityViewFlutterPlatform {
   // Every method call passes the int unityId

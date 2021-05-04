@@ -1,4 +1,4 @@
-part of flutter_unity_widget;
+part of flutter_unity_widget_old;
 
 abstract class UnityViewFlutterPlatform extends PlatformInterface {
   /// Constructs a UnityViewFlutterPlatform.
