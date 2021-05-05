@@ -29,7 +29,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.xraph.plugins.flutterunitywidget
+        package: com.xraph.plugins.flutterunitywidgetold
         pluginClass: FlutterUnityWidgetPlugin
       ios:
         pluginClass: FlutterUnityWidgetPlugin
