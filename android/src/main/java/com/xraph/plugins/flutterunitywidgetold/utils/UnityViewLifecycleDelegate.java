@@ -1,6 +1,6 @@
-package com.xraph.plugins.flutterunitywidget.utils;
+package com.xraph.plugins.flutterunitywidgetold.utils;
 
-import com.xraph.plugins.flutterunitywidget.OnCreateUnityViewCallback;
+import com.xraph.plugins.flutterunitywidgetold.OnCreateUnityViewCallback;
 
 public interface UnityViewLifecycleDelegate extends LifecycleDelegate {
   void getUnityPlayerAsync(OnCreateUnityViewCallback callback);

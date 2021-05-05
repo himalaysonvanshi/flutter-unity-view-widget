@@ -1,4 +1,4 @@
-package com.xraph.plugins.flutterunitywidget;
+package com.xraph.plugins.flutterunitywidgetold;
 
 public interface OnCreateUnityViewCallback {
   void onReady();

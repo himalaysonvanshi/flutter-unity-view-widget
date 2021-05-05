@@ -1,4 +1,4 @@
-package com.xraph.plugins.flutterunitywidget;
+package com.xraph.plugins.flutterunitywidgetold;
 
 import android.app.Activity;
 import android.app.Application;

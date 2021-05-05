@@ -119,7 +119,7 @@ public class UnityMessageManager : MonoBehaviour
 #if UNITY_ANDROID
         try
         {
-            AndroidJavaClass jc = new AndroidJavaClass("com.xraph.plugins.flutterunitywidget.UnityUtils");
+            AndroidJavaClass jc = new AndroidJavaClass("com.xraph.plugins.flutterunitywidgetold.UnityUtils");
             jc.CallStatic("onUnitySceneLoaded", scene.name, scene.buildIndex, scene.isLoaded, scene.IsValid());
         }
         catch (Exception e)
@@ -136,7 +136,7 @@ public class UnityMessageManager : MonoBehaviour
         #if UNITY_ANDROID
             try
             {
-                AndroidJavaClass jc = new AndroidJavaClass("com.xraph.plugins.flutterunitywidget.UnityUtils");
+                AndroidJavaClass jc = new AndroidJavaClass("com.xraph.plugins.flutterunitywidgetold.UnityUtils");
                 jc.CallStatic("onUnityMessage", message);
             }
             catch (Exception e)

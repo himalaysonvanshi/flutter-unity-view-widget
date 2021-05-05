@@ -1,4 +1,4 @@
-package com.xraph.plugins.flutterunitywidget;
+package com.xraph.plugins.flutterunitywidgetold;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -13,7 +13,7 @@ import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 
-import com.xraph.plugins.flutterunitywidget.utils.ThreadUtils;
+import com.xraph.plugins.flutterunitywidgetold.utils.ThreadUtils;
 import com.unity3d.player.IUnityPlayerLifecycleEvents;
 
 import java.util.HashMap;
@@ -27,12 +27,12 @@ import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.PluginRegistry;
 import io.flutter.plugin.platform.PlatformView;
 
-import static com.xraph.plugins.flutterunitywidget.FlutterUnityWidgetPlugin.CREATED;
-import static com.xraph.plugins.flutterunitywidget.FlutterUnityWidgetPlugin.DESTROYED;
-import static com.xraph.plugins.flutterunitywidget.FlutterUnityWidgetPlugin.PAUSED;
-import static com.xraph.plugins.flutterunitywidget.FlutterUnityWidgetPlugin.RESUMED;
-import static com.xraph.plugins.flutterunitywidget.FlutterUnityWidgetPlugin.STARTED;
-import static com.xraph.plugins.flutterunitywidget.FlutterUnityWidgetPlugin.STOPPED;
+import static com.xraph.plugins.flutterunitywidgetold.FlutterUnityWidgetPlugin.CREATED;
+import static com.xraph.plugins.flutterunitywidgetold.FlutterUnityWidgetPlugin.DESTROYED;
+import static com.xraph.plugins.flutterunitywidgetold.FlutterUnityWidgetPlugin.PAUSED;
+import static com.xraph.plugins.flutterunitywidgetold.FlutterUnityWidgetPlugin.RESUMED;
+import static com.xraph.plugins.flutterunitywidgetold.FlutterUnityWidgetPlugin.STARTED;
+import static com.xraph.plugins.flutterunitywidgetold.FlutterUnityWidgetPlugin.STOPPED;
 
 @SuppressLint("NewApi")
 final class FlutterUnityViewController

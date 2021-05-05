@@ -1,4 +1,4 @@
-package com.xraph.plugins.flutterunitywidget;
+package com.xraph.plugins.flutterunitywidgetold;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -9,8 +9,8 @@ import android.os.Vibrator;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
-import com.xraph.plugins.flutterunitywidget.utils.DeferredLifecycleHelper;
-import com.xraph.plugins.flutterunitywidget.utils.ThreadUtils;
+import com.xraph.plugins.flutterunitywidgetold.utils.DeferredLifecycleHelper;
+import com.xraph.plugins.flutterunitywidgetold.utils.ThreadUtils;
 import com.unity3d.player.IUnityPlayerLifecycleEvents;
 import com.unity3d.player.UnityPlayer;
 

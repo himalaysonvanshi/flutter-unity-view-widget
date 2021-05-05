@@ -143,7 +143,7 @@ project(":unityLibrary").projectDir = file("./unityLibrary")
   5. If you want unity in it's own activity as an alternative, just add this to your app `AndroidManifest.xml` file
 ```xml
         <activity
-            android:name="com.xraph.plugins.flutterunitywidget.ExtendedUnityActivity"
+            android:name="com.xraph.plugins.flutterunitywidgetold.ExtendedUnityActivity"
             android:theme="@style/UnityThemeSelector"
             android:screenOrientation="fullSensor"
             android:launchMode="singleTask"
@@ -151,7 +151,7 @@ project(":unityLibrary").projectDir = file("./unityLibrary")
             android:hardwareAccelerated="false"
             android:process=":Unity"
         >
-            <meta-data android:name="com.xraph.plugins.flutterunitywidget.ExtendedUnityActivity" android:value="true" />
+            <meta-data android:name="com.xraph.plugins.flutterunitywidgetold.ExtendedUnityActivity" android:value="true" />
         </activity>
 ```
 

@@ -39,14 +39,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.xraph.plugins.flutterunitywidget.SurrogateActivity"
+            android:name="com.xraph.plugins.flutterunitywidgetold.SurrogateActivity"
             android:theme="@style/UnityThemeSelector"
             android:screenOrientation="fullSensor"
             android:launchMode="singleTask"
             android:process=":Unity"
         />
         <activity
-            android:name="com.xraph.plugins.flutterunitywidget.ExtendedUnityActivity"
+            android:name="com.xraph.plugins.flutterunitywidgetold.ExtendedUnityActivity"
             android:theme="@style/UnityThemeSelector"
             android:screenOrientation="fullSensor"
             android:launchMode="singleTask"
@@ -54,7 +54,7 @@
             android:hardwareAccelerated="false"
             android:process=":Unity"
         >
-            <meta-data android:name="com.xraph.plugins.flutterunitywidget.ExtendedUnityActivity" android:value="true" />
+            <meta-data android:name="com.xraph.plugins.flutterunitywidgetold.ExtendedUnityActivity" android:value="true" />
         </activity>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->

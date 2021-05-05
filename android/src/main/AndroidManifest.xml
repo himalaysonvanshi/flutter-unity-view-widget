@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.xraph.plugins.flutterunitywidget">
+  package="com.xraph.plugins.flutterunitywidgetold">
 
     <uses-permission android:name="android.permission.VIBRATE" />
 </manifest>
