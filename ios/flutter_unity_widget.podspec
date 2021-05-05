@@ -2,7 +2,7 @@
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
 #
 Pod::Spec.new do |s|
-  s.name             = 'flutter_unity_widget'
+  s.name             = 'flutter_unity_widget_old'
   s.version          = '0.0.1'
   s.summary          = 'Flutter unity 3D widget for embedding unity in flutter'
   s.description      = <<-DESC

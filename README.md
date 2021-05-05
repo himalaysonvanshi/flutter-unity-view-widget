@@ -1,4 +1,4 @@
-# flutter_unity_widget
+# flutter_unity_widget_old
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 
 [![version][version-badge]][package]
@@ -20,13 +20,13 @@ Note: I have updated the example for Unity 2019.3.5 and there are some new chang
 
 ```yaml
 dependencies:
-  flutter_unity_widget: ^2.0.0+2
+  flutter_unity_widget_old: ^2.0.0+2
 ```
 
 Now inside your Dart code you can import it.
 
 ```dart
-import 'package:flutter_unity_widget/flutter_unity_widget.dart';
+import 'package:flutter_unity_widget_old/flutter_unity_widget_old.dart';
 ```
 <br />
 
@@ -256,7 +256,7 @@ Thanks to [@PiotrxKolasinski](https://github.com/PiotrxKolasinski) for writing d
 ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_unity_widget/flutter_unity_widget.dart';
+import 'package:flutter_unity_widget_old/flutter_unity_widget_old.dart';
 
 class UnityDemoScreen extends StatefulWidget {
 
@@ -304,7 +304,7 @@ class _UnityDemoScreenState extends State<UnityDemoScreen>{
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:flutter_unity_widget/flutter_unity_widget.dart';
+import 'package:flutter_unity_widget_old/flutter_unity_widget_old.dart';
 
 void main() => runApp(MyApp());
 
@@ -434,8 +434,8 @@ class _MyAppState extends State<MyApp> {
  - Remember to disabled fullscreen in unity player settings to disable unity fullscreen.
 
 
-[version-badge]: https://img.shields.io/pub/v/flutter_unity_widget.svg?style=flat-square
-[package]: https://pub.dartlang.org/packages/flutter_unity_widget/
+[version-badge]: https://img.shields.io/pub/v/flutter_unity_widget_old.svg?style=flat-square
+[package]: https://pub.dartlang.org/packages/flutter_unity_widget_old/
 [license-badge]: https://img.shields.io/github/license/juicycleff/flutter-unity-view-widget.svg?style=flat-square
 [license]: https://github.com/juicycleff/flutter-unity-view-widget/blob/master/LICENSE
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
