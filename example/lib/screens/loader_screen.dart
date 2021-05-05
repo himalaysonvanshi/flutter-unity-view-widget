@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_unity_widget_old/flutter_unity_widget_old.dart';
+import 'package:flutter_unity_widget/flutter_unity_widget.dart';
 
 class LoaderScreen extends StatefulWidget {
   LoaderScreen({Key key}) : super(key: key);
@@ -34,7 +34,7 @@ class _LoaderScreenState extends State<LoaderScreen> {
         child: Stack(
           children: <Widget>[
             UnityWidget(
-              onUnityCreated: onUnityCreated,
+              onUnityViewCreated: onUnityCreated,
               isARScene: true,
               safeMode: true,
               onUnityMessage: onUnityMessage,
@@ -80,7 +80,7 @@ class _LoaderScreenState extends State<LoaderScreen> {
     );
   }
 
-  void onUnityMessage(message) {
+  void onUnityMessage(controller, message) {
     print('Received message from unity: ${message.toString()}');
   }
 

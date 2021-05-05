@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_unity_widget_old/flutter_unity_widget_old.dart';
+import 'package:flutter_unity_widget/flutter_unity_widget.dart';
 import 'package:flutter_unity_widget_example/utils/screen_utils.dart';
 
 class ApiScreen extends StatefulWidget {
@@ -40,7 +40,7 @@ class _ApiScreenState extends State<ApiScreen> {
             Expanded(
               child: Container(
                 child: UnityWidget(
-                  onUnityCreated: onUnityCreated,
+                  onUnityViewCreated: onUnityCreated,
                   isARScene: arguments.enableAR,
                   onUnityMessage: onUnityMessage,
                   onUnitySceneLoaded: onUnitySceneLoaded,
@@ -76,13 +76,13 @@ class _ApiScreenState extends State<ApiScreen> {
                       children: [
                         MaterialButton(
                           onPressed: () {
-                            _unityWidgetController.quit();
+                            _unityWidgetController.quitPlayer();
                           },
                           child: Text("Quit"),
                         ),
                         MaterialButton(
                           onPressed: () {
-                            _unityWidgetController.create();
+                            _unityWidgetController.createUnity();
                           },
                           child: Text("Create"),
                         ),
@@ -104,8 +104,8 @@ class _ApiScreenState extends State<ApiScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         MaterialButton(
-                          onPressed: () async {
-                            await _unityWidgetController.openInNativeProcess();
+                          onPressed: () {
+                            _unityWidgetController.openNative();
                           },
                           child: Text("Open Native"),
                         ),
@@ -117,7 +117,7 @@ class _ApiScreenState extends State<ApiScreen> {
                         ),
                         MaterialButton(
                           onPressed: () {
-                            _unityWidgetController.quit(silent: true);
+                            _unityWidgetController.silentQuitPlayer();
                           },
                           child: Text("Silent Quit"),
                         ),
@@ -141,13 +141,19 @@ class _ApiScreenState extends State<ApiScreen> {
     );
   }
 
-  void onUnityMessage(message) {
+  void onUnityMessage(controller, message) {
     print('Received message from unity: ${message.toString()}');
   }
 
-  void onUnitySceneLoaded(SceneLoaded scene) {
-    print('Received scene loaded from unity: ${scene.name}');
-    print('Received scene loaded from unity buildIndex: ${scene.buildIndex}');
+  void onUnitySceneLoaded(
+    controller, {
+    int buildIndex,
+    bool isLoaded,
+    bool isValid,
+    String name,
+  }) {
+    print('Received scene loaded from unity: $name');
+    print('Received scene loaded from unity buildIndex: $buildIndex');
   }
 
   // Callback that connects the created controller to the unity controller

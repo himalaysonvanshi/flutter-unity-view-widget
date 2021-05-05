@@ -17,6 +17,8 @@
 
 @property UnityFramework* ufw;
 
+- (void)initUnity;
+- (void)UnloadUnity;
 - (void)setUnityView:(UIView *)view;
 
 @end

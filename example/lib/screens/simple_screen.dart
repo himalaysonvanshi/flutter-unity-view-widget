@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_unity_widget_old/flutter_unity_widget_old.dart';
+import 'package:flutter_unity_widget/flutter_unity_widget.dart';
 import 'package:flutter_unity_widget_example/utils/screen_utils.dart';
 
 class SimpleScreen extends StatefulWidget {
@@ -12,7 +12,6 @@ class SimpleScreen extends StatefulWidget {
 class _SimpleScreenState extends State<SimpleScreen> {
   static final GlobalKey<ScaffoldState> _scaffoldKey =
       GlobalKey<ScaffoldState>();
-
   UnityWidgetController _unityWidgetController;
   double _sliderValue = 0.0;
 
@@ -27,7 +26,6 @@ class _SimpleScreenState extends State<SimpleScreen> {
         ModalRoute.of(context).settings.arguments as ScreenArguments;
 
     return Scaffold(
-      key: _scaffoldKey,
       appBar: AppBar(
         title: Text('Simple Screen'),
       ),
@@ -40,10 +38,9 @@ class _SimpleScreenState extends State<SimpleScreen> {
           child: Stack(
             children: [
               UnityWidget(
-                onUnityCreated: _onUnityCreated,
+                onUnityViewCreated: onUnityCreated,
                 isARScene: arguments.enableAR,
                 onUnityMessage: onUnityMessage,
-                onUnitySceneLoaded: onUnitySceneLoaded,
               ),
               Positioned(
                 bottom: 20,
@@ -85,17 +82,12 @@ class _SimpleScreenState extends State<SimpleScreen> {
     );
   }
 
-  void onUnityMessage(message) {
+  void onUnityMessage(controller, message) {
     print('Received message from unity: ${message.toString()}');
   }
 
-  void onUnitySceneLoaded(SceneLoaded scene) {
-    print('Received scene loaded from unity: ${scene.name}');
-    print('Received scene loaded from unity buildIndex: ${scene.buildIndex}');
-  }
-
   // Callback that connects the created controller to the unity controller
-  void _onUnityCreated(controller) {
+  void onUnityCreated(controller) {
     this._unityWidgetController = controller;
   }
 }

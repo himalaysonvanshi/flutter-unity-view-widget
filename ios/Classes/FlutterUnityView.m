@@ -29,7 +29,6 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
     [(UIView *)self.uView removeFromSuperview];
     [self insertSubview:(UIView *)self.uView atIndex:0];
     ((UIView *)self.uView).frame = self.bounds;

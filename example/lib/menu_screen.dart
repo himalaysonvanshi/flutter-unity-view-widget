@@ -9,8 +9,6 @@ class MenuScreen extends StatefulWidget {
 }
 
 class _MenuScreenState extends State<MenuScreen> {
-  bool enableAR = true;
-
   List<_MenuListItem> menus = [
     new _MenuListItem(
       description: 'Simple demonstration of unity flutter library',
@@ -19,10 +17,23 @@ class _MenuScreenState extends State<MenuScreen> {
       enableAR: false,
     ),
     new _MenuListItem(
+      description:
+          'Simple demonstration of unity flutter library with AR enabled',
+      route: '/simple',
+      title: 'Simple Unity Demo (AR)',
+      enableAR: true,
+    ),
+    new _MenuListItem(
       description: 'Unity load and unload unity demo',
       route: '/loader',
       title: 'Safe mode Demo',
       enableAR: false,
+    ),
+    new _MenuListItem(
+      description: 'Unity load and unload unity demo with AR enabled',
+      route: '/loader',
+      title: 'Safe mode Demo (AR)',
+      enableAR: true,
     ),
     new _MenuListItem(
       description:
@@ -32,10 +43,11 @@ class _MenuScreenState extends State<MenuScreen> {
       enableAR: false,
     ),
     new _MenuListItem(
-      title: 'Test Orientation',
-      route: '/orientation',
-      description: 'test orientation change',
-      enableAR: false,
+      description:
+          'This example shows various native API exposed by the library with AR enabled',
+      route: '/api',
+      title: 'Native exposed API demo (AR)',
+      enableAR: true,
     ),
     new _MenuListItem(
       description: 'Unity native activity demo',
@@ -50,21 +62,6 @@ class _MenuScreenState extends State<MenuScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Menu List'),
-        actions: [
-          Row(
-            children: [
-              Text("Enable AR"),
-              Checkbox(
-                value: enableAR,
-                onChanged: (changed) {
-                  setState(() {
-                    enableAR = changed;
-                  });
-                },
-              ),
-            ],
-          ),
-        ],
       ),
       body: Center(
         child: ListView.builder(
@@ -76,7 +73,7 @@ class _MenuScreenState extends State<MenuScreen> {
               onTap: () {
                 Navigator.of(context).pushNamed(
                   menus[i].route,
-                  arguments: ScreenArguments(enableAR: enableAR),
+                  arguments: ScreenArguments(enableAR: menus[i].enableAR),
                 );
               },
             );

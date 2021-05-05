@@ -110,6 +110,9 @@ public class Build
 
         if (report.summary.result != BuildResult.Succeeded)
             throw new Exception("Build failed");
+
+        // Automate so manual steps
+        GetSomeRestWillYa();
     }
 
 
@@ -213,6 +216,7 @@ project("":unityLibrary"").projectDir = file(""./unityLibrary"")
         if (!Regex.IsMatch(app_build_script, @"dependencies \{"))
         {
             app_build_script += @"
+
 dependencies {
     implementation project(':unityLibrary')
 }
@@ -220,7 +224,7 @@ dependencies {
             File.WriteAllText(app_build_path, app_build_script);
         } else
         {
-            if (!app_build_script.Contains(@"implementation project(':unityLibrary')"))
+            if (!Regex.IsMatch(app_build_script, @"implementation project(':unityLibrary')"))
             {
                 Regex regex = new Regex(@"dependencies \{", RegexOptions.Multiline);
                 app_build_script = regex.Replace(app_build_script, @"
@@ -231,6 +235,7 @@ dependencies {
             }
         }
     }
+
 
     /// <summary>
     /// This method tries to autome the build setup required for Android
@@ -289,7 +294,7 @@ project("":unityLibrary"").projectDir = file(""./unityLibrary"")
     static void GetSomeRestWillYaPlugin()
     {
         string iosRunnerPath = Path.GetFullPath(Path.Combine(ProjectPath, "../../ios"));
-        var pubsec_file = Path.Combine(iosRunnerPath, "flutter_unity_widget_old.podspec");
+        var pubsec_file = Path.Combine(iosRunnerPath, "flutter_unity_widget.podspec");
         var pubsec_text = File.ReadAllText(pubsec_file);
 
         if (!Regex.IsMatch(pubsec_text, @"\w\.xcconfig(?:[^}]*})+") && !Regex.IsMatch(pubsec_text, @"tar -xvjf UnityFramework.tar.bz2"))
@@ -297,7 +302,7 @@ project("":unityLibrary"").projectDir = file(""./unityLibrary"")
             Regex regex = new Regex(@"\w\.xcconfig(?:[^}]*})+", RegexOptions.Multiline);
             pubsec_text = regex.Replace(pubsec_text, @"
 	spec.xcconfig = {
-        'FRAMEWORK_SEARCH_PATHS' => '""${PODS_ROOT}/../.symlinks/plugins/flutter_unity_widget_old/ios"" ""${PODS_ROOT}/../.symlinks/flutter/ios-release"" ""${PODS_CONFIGURATION_BUILD_DIR}""',
+        'FRAMEWORK_SEARCH_PATHS' => '""${PODS_ROOT}/../.symlinks/plugins/flutter_unity_widget/ios"" ""${PODS_ROOT}/../.symlinks/flutter/ios-release"" ""${PODS_CONFIGURATION_BUILD_DIR}""',
         'OTHER_LDFLAGS' => '$(inherited) -framework UnityFramework \${PODS_LIBRARIES}'
     }
 

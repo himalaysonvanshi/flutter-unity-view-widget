@@ -1,41 +1,28 @@
-part of flutter_unity_widget_old;
+part of flutter_unity_widget;
 
 class UnityWidget extends StatefulWidget {
-  ///Event fires when the unity player is created.
-  final UnityCreatedCallback onUnityCreated;
+  final UnityWidgetCreatedCallback onUnityViewCreated;
 
   ///Event fires when the [UnityWidget] gets a message from unity.
-  final UnityMessageCallback onUnityMessage;
+  final onUnityMessageCallback onUnityMessage;
 
   ///Event fires when the [UnityWidget] gets a scene loaded from unity.
-  final UnitySceneChangeCallback onUnitySceneLoaded;
+  final onUnitySceneChangeCallback onUnitySceneLoaded;
 
-  ///Event fires when the [UnityWidget] unity player gets unloaded.
-  final UnityUnloadCallback onUnityUnloaded;
+  ///Event fires when the [UnityWidget] gets a message from unity.
+  final onUnityUnloadCallback onUnityUnloaded;
 
   final Set<Factory<OneSequenceGestureRecognizer>> gestureRecognizers;
-
-  /// Set to `true` if your unity app integrates `AR Core`
   final bool isARScene;
-
-  /// Set to true to run the integration in safe mode
   final bool safeMode;
-
-  /// Set to true to force unity to fullscreen
   final bool fullscreen;
-
-  /// Completely disable unload
-  final bool disableUnload;
-
-  /// This flag enables placeholder widget
   final bool enablePlaceholder;
-
-  /// This is just a helper to render a placeholder widget
+  final bool disableUnload;
   final Widget placeholder;
 
   UnityWidget({
     Key key,
-    @required this.onUnityCreated,
+    @required this.onUnityViewCreated,
     this.onUnityMessage,
     this.isARScene = false,
     this.safeMode = false,
@@ -53,8 +40,8 @@ class UnityWidget extends StatefulWidget {
 }
 
 class _UnityWidgetState extends State<UnityWidget> {
-  final Completer<UnityWidgetController> _controller =
-      Completer<UnityWidgetController>();
+  final String _viewType = "plugins.xraph.com/unity_view";
+  UnityWidgetController _controller;
 
   @override
   void initState() {
@@ -67,10 +54,25 @@ class _UnityWidgetState extends State<UnityWidget> {
   }
 
   @override
-  Future<void> dispose() async {
+  void dispose() {
     super.dispose();
-    UnityWidgetController controller = await _controller.future;
-    controller.dispose();
+    if (_controller != null) {
+      _controller._dispose();
+      _controller = null;
+    }
+  }
+
+  createUnity() async {
+    if (!widget.enablePlaceholder) {
+      await _controller.createUnity();
+      await _controller.resume();
+    }
+  }
+
+  unloadUnity() async {
+    if (!widget.enablePlaceholder) {
+      await _controller.unload();
+    }
   }
 
   @override
@@ -87,18 +89,37 @@ class _UnityWidgetState extends State<UnityWidget> {
           Text('Placeholder mode enabled, no native code will be called');
     }
 
-    return _unityViewFlutterPlatform.buildView(
-      creationParams,
-      widget.gestureRecognizers,
-      onPlatformViewCreated,
-    );
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      return AndroidView(
+        viewType: _viewType,
+        onPlatformViewCreated: _onPlatformViewCreated,
+        creationParamsCodec: const StandardMessageCodec(),
+        creationParams: creationParams,
+        gestureRecognizers: widget.gestureRecognizers,
+      );
+    } else if (defaultTargetPlatform == TargetPlatform.iOS) {
+      return UiKitView(
+        viewType: _viewType,
+        onPlatformViewCreated: _onPlatformViewCreated,
+        creationParamsCodec: const StandardMessageCodec(),
+        creationParams: creationParams,
+        gestureRecognizers: widget.gestureRecognizers,
+      );
+    }
+
+    return new Text(
+        '$defaultTargetPlatform is not yet supported by this plugin');
   }
 
-  Future<void> onPlatformViewCreated(int id) async {
-    final controller = await UnityWidgetController.init(id, this);
-    _controller.complete(controller);
-    if (widget.onUnityCreated != null) {
-      widget.onUnityCreated(controller);
+  @override
+  void didUpdateWidget(UnityWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+  }
+
+  void _onPlatformViewCreated(int id) {
+    _controller = UnityWidgetController.init(id, this);
+    if (widget.onUnityViewCreated != null) {
+      widget.onUnityViewCreated(_controller);
     }
     print('*********************************************');
     print('** flutter unity controller setup complete **');

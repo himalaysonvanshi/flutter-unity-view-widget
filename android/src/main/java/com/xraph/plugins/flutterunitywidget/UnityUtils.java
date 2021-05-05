@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.graphics.PixelFormat;
 import android.os.Build;
 import android.os.StrictMode;
+import android.os.Vibrator;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
@@ -82,7 +83,7 @@ public class UnityUtils {
 
                     try {
                         // wait a moument. fix unity cannot start when startup.
-                        Thread.sleep( 1000 );
+                        Thread.sleep(1000);
                     } catch (Exception e) {
                     }
 
@@ -176,6 +177,9 @@ public class UnityUtils {
      * Invoke by unity C#
      */
     public static void onUnityMessage(String message) {
+        if (message.equals("{\"type\":-2,\"duration\":100}")) {
+            Vibrate();
+        }
         for (UnityEventListener listener : mUnityEventListeners) {
             try {
                 listener.onMessage(message);
@@ -198,7 +202,7 @@ public class UnityUtils {
             return;
         }
         if (unityPlayer.getParent() != null) {
-            ((ViewGroup)unityPlayer.getParent()).removeView(unityPlayer);
+            ((ViewGroup) unityPlayer.getParent()).removeView(unityPlayer);
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             unityPlayer.setZ(-1f);
@@ -213,7 +217,7 @@ public class UnityUtils {
             return;
         }
         if (unityPlayer.getParent() != null) {
-            ((ViewGroup)unityPlayer.getParent()).addView(unityPlayer);
+            ((ViewGroup) unityPlayer.getParent()).addView(unityPlayer);
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             unityPlayer.setZ(1f);
@@ -228,12 +232,17 @@ public class UnityUtils {
             return;
         }
         if (unityPlayer.getParent() != null) {
-            ((ViewGroup)unityPlayer.getParent()).removeView(unityPlayer);
+            ((ViewGroup) unityPlayer.getParent()).removeView(unityPlayer);
         }
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT);
         group.addView(unityPlayer, 0, layoutParams);
         unityPlayer.windowFocusChanged(true);
         unityPlayer.requestFocus();
         unityPlayer.resume();
+    }
+
+    public static void Vibrate() {
+        Vibrator v = (Vibrator) unityPlayer.getContext().getSystemService(unityPlayer.getContext().VIBRATOR_SERVICE);
+        v.vibrate(100);
     }
 }
