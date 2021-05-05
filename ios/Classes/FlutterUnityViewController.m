@@ -53,7 +53,7 @@
     if ([super init]) {
         _viewId = viewId;
 
-        NSString* channelName = [NSString stringWithFormat:@"plugins.xraph.com/unity_view_%lld", viewId];
+        NSString* channelName = [NSString stringWithFormat:@"plugins.xraph.com/unity_view_old_%lld", viewId];
         _channel = [FlutterMethodChannel methodChannelWithName:channelName binaryMessenger:registrar.messenger];
         __weak __typeof__(self) weakSelf = self;
         [_channel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {

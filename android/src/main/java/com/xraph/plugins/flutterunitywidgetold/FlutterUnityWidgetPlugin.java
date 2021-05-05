@@ -39,7 +39,7 @@ public class FlutterUnityWidgetPlugin implements Application.ActivityLifecycleCa
   private Lifecycle lifecycle;
   private static  PluginRegistry.Registrar mRegistrar;
 
-  private static final String VIEW_TYPE = "plugins.xraph.com/unity_view";
+  private static final String VIEW_TYPE = "plugins.xraph.com/unity_view_old";
 
   public static void registerWith(PluginRegistry.Registrar registrar) {
     if (registrar.activity() == null) {

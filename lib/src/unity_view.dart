@@ -40,7 +40,7 @@ class UnityWidget extends StatefulWidget {
 }
 
 class _UnityWidgetState extends State<UnityWidget> {
-  final String _viewType = "plugins.xraph.com/unity_view";
+  final String _viewType = "plugins.xraph.com/unity_view_old";
   UnityWidgetController _controller;
 
   @override

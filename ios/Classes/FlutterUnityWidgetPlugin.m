@@ -17,7 +17,7 @@
 
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
     FLTUnityViewFactory* fuviewFactory = [[FLTUnityViewFactory alloc] initWithRegistrar:registrar];
-    [registrar registerViewFactory:fuviewFactory withId:@"plugins.xraph.com/unity_view" gestureRecognizersBlockingPolicy:
+    [registrar registerViewFactory:fuviewFactory withId:@"plugins.xraph.com/unity_view_old" gestureRecognizersBlockingPolicy:
      FlutterPlatformViewGestureRecognizersBlockingPolicyWaitUntilTouchesEnded];
 }
 
