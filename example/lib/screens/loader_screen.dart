@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_unity_widget_old/flutter_unity_widget_old.dart';
+import 'package:flutter_unity_widget_old/flutter_unity_widget.dart';
 
 class LoaderScreen extends StatefulWidget {
   LoaderScreen({Key key}) : super(key: key);
